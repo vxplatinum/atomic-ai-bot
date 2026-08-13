@@ -1,0 +1,58 @@
+# OS
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors / IDE
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Secrets — keep .env.example
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# JS / frontend build
+dist/
+dist-ssr
+*.local
+
+# Logs & temp
+logs/
+*.log
+*.tmp
+*.bak
+*.pid
+
+# Local DBs
+*.db
+*.sqlite3
+
+# Agent notes (any case)
+AGENT.md
+Agent.md

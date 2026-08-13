@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./atomic-ai-bot-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./atomic-ai-bot-backend/.env
+
+  widget:
+    build: ./atomic-ai-bot-widget
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./atomic-ai-bot-widget/.env
+    environment:
+      SERVER_URL: http://backend:8000
+    depends_on:
+      - backend
+
+  frontend:
+    build:
+      context: ./atomic-ai-bot-frontend
+      args:
+        VITE_SERVER_URL: http://127.0.0.1:8000
+        VITE_WIDGET_SCRIPT_URL: http://127.0.0.1:8080/static/js/widget.js
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+      - widget

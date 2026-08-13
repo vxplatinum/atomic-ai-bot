@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if bot_url %}
+      <meta name="atomic-ai-bot-bot-base" content="{{ bot_url }}" />
+    {% endif %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}?v=202602131"
+    />
+    {% if chat_theme_accent or chat_theme_text %}
+      <style>
+        :root {
+          {% if chat_theme_accent %}--chat-accent: {{ chat_theme_accent }};{% endif %}
+          {% if chat_theme_text %}--chat-on-accent: {{ chat_theme_text }};{% endif %}
+        }
+      </style>
+    {% endif %}
+    <title>Atomic AI Bot</title>
+  </head>
+  <body>
+    <div class="chat">
+      <div class="chat__header">
+        <div class="chat__header-leading">
+          <button
+            type="button"
+            id="chat-close-btn"
+            class="chat__menu-toggle"
+            aria-label="Close chat"
+          >
+            <span class="chat__close-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <span class="chat__title">{{ chat_header_title|e }}</span>
+        <div class="chat__header-trailing">
+          <button
+            type="button"
+            id="chat-menu-btn"
+            class="chat__menu-toggle"
+            aria-label="Chat menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="chat-menu-dropdown"
+            disabled
+          >
+            <span class="chat__menu-icon" aria-hidden="true">
+              <span class="chat__menu-line"></span>
+              <span class="chat__menu-line"></span>
+              <span class="chat__menu-line"></span>
+            </span>
+          </button>
+          <div id="chat-menu-dropdown" class="chat__dropdown" hidden role="menu">
+            <button
+              type="button"
+              role="menuitem"
+              id="chat-clear-btn"
+              class="chat__dropdown-item chat__dropdown-item--clear"
+              aria-label="Clear chat"
+            >
+              <img
+                src="{{ url_for('static', path='images/bucket.png') }}"
+                alt=""
+                width="18"
+                height="18"
+                decoding="async"
+                class="chat__dropdown-icon"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat__messages" id="messages"></div>
+
+      <div class="chat__input">
+        <input
+          type="text"
+          id="input"
+          class="chat__field"
+          placeholder="Enter your message..."
+        />
+        <button id="send" class="chat__button">→</button>
+      </div>
+
+      <footer class="chat__brand">
+        Powered by
+        <a
+          class="chat__brand-link"
+          href="http://localhost:5173/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Atomic AI Bot</a>
+      </footer>
+
+      <div id="clear-chat-modal" class="chat__modal" hidden aria-hidden="true">
+        <div
+          class="chat__modal-backdrop"
+          id="clear-chat-modal-backdrop"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="chat__modal-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="clear-chat-modal-title"
+        >
+          <p id="clear-chat-modal-title" class="chat__modal-message">
+            Are you sure you want to clear this chat?
+          </p>
+          <div class="chat__modal-actions">
+            <button
+              type="button"
+              id="clear-chat-cancel"
+              class="chat__modal-btn chat__modal-btn--secondary"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              id="clear-chat-confirm"
+              class="chat__modal-btn chat__modal-btn--primary"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', path='js/script.js') }}?v=202602125"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "atomic-ai-bot-test-shops-node",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Minimal Express + EJS server for static shop page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0"
+  }
+}

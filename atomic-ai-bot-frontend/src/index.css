@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-line: var(--line);
+  --font-sans: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-heading: "Exo 2", system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #fcfcfc;
+    --surface: #ffffff;
+    --foreground: #0f172a;
+    --foreground-muted: #475569;
+    --brand: #3b82f6;
+    --brand-hover: #2563eb;
+    --line: #bfdbfe;
+    --site-header-height: 5.25rem;
+  }
+
+  .dark {
+    --background: #111113;
+    --surface: #18181b;
+    --foreground: #f8fafc;
+    --foreground-muted: #94a3b8;
+    --brand: #0ea5e9;
+    --brand-hover: #38bdf8;
+    --line: #0284c7;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  button:not(:disabled),
+  input[type='button']:not(:disabled),
+  input[type='submit']:not(:disabled),
+  input[type='reset']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  input[type='button']:disabled,
+  input[type='submit']:disabled,
+  input[type='reset']:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .layout-container {
+    @apply w-full max-w-[1100px] mx-auto px-4;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-line bg-surface text-foreground rounded focus:outline-none focus:ring-2 focus:ring-brand transition-colors;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 rounded bg-brand text-white hover:bg-brand-hover transition-colors font-medium inline-flex justify-center items-center cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded bg-surface text-foreground border border-line hover:border-brand transition-colors font-medium inline-flex justify-center items-center cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply border border-line bg-surface p-4 rounded-lg;
+  }
+
+  @keyframes home-cta-logo-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .home-cta-logo-scale {
+    display: block;
+    transform-origin: center;
+    transition: transform 0.35s ease-out;
+  }
+
+  .home-cta-logo-inner {
+    display: block;
+    transform-origin: center;
+  }
+
+  .home-cta-logo-btn:hover .home-cta-logo-scale {
+    transform: scale(1.12);
+  }
+
+  .home-cta-logo-btn:hover .home-cta-logo-inner {
+    animation: home-cta-logo-spin 7s linear infinite;
+  }
+
+  .hero-logo-slow-spin {
+    transform-origin: center;
+    animation: home-cta-logo-spin 90s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo-slow-spin {
+      animation: none;
+    }
+  }
+}

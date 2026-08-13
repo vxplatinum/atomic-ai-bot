@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+
+# Variables
+.env
+
+# venv
+.venv/
+venv/
+env/
+
+# pipenv / poetry / uv-lock
+Pipfile.lock
+poetry.lock
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# Build
+dist/
+build/
+*.tar.gz
+*.whl
+
+# Node JS
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# AI Agent
+Agent.md
